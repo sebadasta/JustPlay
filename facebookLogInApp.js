@@ -11,8 +11,8 @@
     FB.getLoginStatus(function(response) {
         if (response.status === 'connected') {
 
-      //  alert("connected true");
-         window.location.replace("home/home.view2.html");
+       alert("Face connected true");
+        //  window.location.replace("home/home.view2.html");
     //   location.reload(true);
 
             var uid = response.authResponse.userID;
@@ -22,11 +22,11 @@
 
         } else if (response.status === 'not_authorized') {
 
-       alert("connected not autori");
+       alert("Face connected not autori");
 
         } else {
             // the user isn't logged in to Facebook.
-        alert("connected false");
+        alert("Face connected false");
 
         }
 
