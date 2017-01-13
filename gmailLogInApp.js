@@ -16,7 +16,7 @@ $(document).ready(function() {
  * The Sign-In client object.
  */
 var auth2;
-
+console.log('entro');
 /**
  * Initializes the Sign-In client.
  */
