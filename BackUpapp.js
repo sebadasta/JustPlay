@@ -17,7 +17,7 @@
 
             .when('/login', {
                 controller: 'LoginController',
-                templateUrl: 'index.html',
+                templateUrl: 'login/login.view.html',
                 controllerAs: 'vm'
             })
 
