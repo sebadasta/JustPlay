@@ -9,6 +9,7 @@ var startApp = function() {
       //scope: 'additional_scope'
     });
     attachSignin(document.getElementById('customBtn'));
+
   });
 };
 
