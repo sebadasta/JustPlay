@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JP LogIn</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="facebookLogInApp.js" charset="utf-8"></script>//facebook LogIn Script
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'http://bootsnipp.com');
+        });
+    </script> -->
+</head>
+<body>
+	<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="wrap">
+                <p class="form-title"><b>Just</b> Play</p>
+                <p class="form-description">MUSIC and VIDEO DIGITAL DISTRIBUTION - MUSIC PUBLISHING - PROMOTION - LIVE BOOKINGS - ARTIST MANAGEMENT</p>
+                <form class="login">
+                <input type="FacebookLogIn" onclick="fb_login();" value="Facebook" class="btn btn-success btn-sm" readonly />
+                <input type="twitterLogIn" value="Twitter" class="btn btn-success btn-sm"  readonly/>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+       <div class="col-lg-12 col-xs-12 col-md-12 col-ms-12 posted-by">Created By: <a href="http://www.gd78music.com">GD Seventy Eight Music LTD.</a></div>
+    </div>
+
+</body>
+</html>
+
+<!-- agregar login qq
+agregar log in twitterLogIn
+agregar gmail login
+agregar vk login -->
