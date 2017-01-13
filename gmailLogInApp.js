@@ -6,5 +6,5 @@ function onSignIn(googleUser) {
   console.log('Name: ' + profile.getName());
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail());
-  console.console.log('token' + id_token);
+  console.console.log(id_token);
 }
