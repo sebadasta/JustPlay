@@ -92,7 +92,32 @@ form.login input[type="twitterLogIn"]:hover
    background-color: #0099e5;
    border-color: #0099e5;
 }
-/*facebook ends*/
+/*Twitter ends*/
+
+
+/*gmailbtn*/
+
+#customBtn {
+  transition: all 1.0s ease;
+  background-color: transparent;
+  border-color:#0099e5 ;
+  width: 100%;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 16px;
+  outline: 0;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+#customBtn:hover {
+  background-color: #0099e5;
+  border-color: #0099e5;
+}
+
+/*gmail nds*/
+
+
 
 
 .posted-by

@@ -1,53 +1,29 @@
-// gmail LogIn
-function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail());
+var googleUser = {};
+var startApp = function() {
+  gapi.load('auth2', function(){
+    // Retrieve the singleton for the GoogleAuth library and set up the client.
+    auth2 = gapi.auth2.init({
+      client_id: '769395586214-jni7dp75c9nj18edh7louk47a6uj6bef.apps.googleusercontent.com',
+      cookiepolicy: 'single_host_origin',
+      // Request scopes in addition to 'profile' and 'email'
+      //scope: 'additional_scope'
+    });
+    attachSignin(document.getElementById('customBtn'));
+  });
+};
 
+function attachSignin(element) {
+  console.log(element.id);
+  auth2.attachClickHandler(element, {},
+      function(googleUser) {
+
+console.log(googleUser.getBasicProfile().getName());
+
+      }, function(error) {
+        alert(JSON.stringify(error, undefined, 2));
+      });
 }
 
 
-$(document).ready(function() {
 
-  /* code here */
-  /**
- * The Sign-In client object.
- */
-var auth2;
-console.log('entro');
-/**
- * Initializes the Sign-In client.
- */
-var initClient = function() {
-    gapi.load('auth2', function(){
-        /**
-         * Retrieve the singleton for the GoogleAuth library and set up the
-         * client.
-         */
-        auth2 = gapi.auth2.init({
-            client_id: '769395586214-jni7dp75c9nj18edh7louk47a6uj6bef.apps.googleusercontent.com'
-        });
-
-        // Attach the click handler to the sign-in button
-        auth2.attachClickHandler('signin-button', {}, onSuccess, onFailure);
-    });
-};
-
-/**
- * Handle successful sign-ins.
- */
-var onSuccess = function(user) {
-    console.log('Signed in as ' + user.getBasicProfile().getName());
- };
-
-/**
- * Handle sign-in failures.
- */
-var onFailure = function(error) {
-    console.log(error);
-};
-
-
- });
+startApp();

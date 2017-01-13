@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" type="text/css" href="index.css">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="769395586214-jni7dp75c9nj18edh7louk47a6uj6bef.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/api:client.js"></script>
+    <!-- <meta name="google-signin-client_id" content="769395586214-jni7dp75c9nj18edh7louk47a6uj6bef.apps.googleusercontent.com"> -->
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="facebookLogInApp.js" charset="utf-8"></script>//facebook LogIn Script
       <script src="gmailLogInApp.js" charset="utf-8"></script>//Gmail LogIn Script
@@ -35,8 +35,17 @@
                 <form class="login">
                 <input type="FacebookLogIn" onclick="fb_login();" value="Facebook" class="btn btn-success btn-sm" readonly />
                 <input type="twitterLogIn" value="Twitter" class="btn btn-success btn-sm"  readonly/>
-                <input type="twitterLogIn" value="Twitter" class="g-signin2 btn btn-success btn-sm" data-onsuccess="onSignIn"  readonly/>
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <input type="twitterLogIn" value="Gmail" class="g-signin2 btn btn-success btn-sm" data-onsuccess="onSignIn"  readonly/>
+
+
+                <div id="gSignInWrapper">
+                  <span class="label">Sign in with:</span>
+                  <div id="customBtn" class="customGPlusSignIn">
+                    <span class="icon"></span>
+                    <span class="buttonText">Google</span>
+                  </div>
+                </div>
+
                 </form>
             </div>
         </div>
