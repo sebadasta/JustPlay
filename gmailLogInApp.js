@@ -18,8 +18,8 @@ function attachSignin(element) {
   auth2.attachClickHandler(element, {},
       function(googleUser) {
 
-       alert("Gmail connected true");
-console.log(googleUser.getBasicProfile().getName());
+    window.location.replace("home/home.view2.html");
+// console.log(googleUser.getBasicProfile().getName());
 
       }, function(error) {
         alert(JSON.stringify(error, undefined, 2));
