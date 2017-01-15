@@ -43,9 +43,9 @@
        hello(auth.network).api('/me').then(function (resp) {
  	var lab = document.createElement("div");
  	lab.id = "pic_and_greet";
- 	lab.innerHTML = '<img style="height:200px;width:200px;" src="' + resp.picture + '" /> Hey ' + resp.name;
+ 	lab.innerHTML = '<img src="' + resp.thumbnail + '" /> Hey ' + resp.name;
  	document.body.appendChild(lab);
-  console.log(resp);
+
        });
      });
 
