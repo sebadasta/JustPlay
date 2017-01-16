@@ -13,7 +13,7 @@ angular.module('authorizeSample', [
   })
   .state("login", {
     url: "/login",
-    templateUrl: '/restrictedArea/borrar.html',
+    templateUrl: '/JustPlay/restrictedArea/borrar.html',
     controller: function($scope, $state, Authorization) {
       $scope.onLogin = function() {
         Authorization.go('private');
