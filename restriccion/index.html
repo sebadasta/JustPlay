@@ -71,7 +71,7 @@
        hello(auth.network).api('/me').then(function (resp) {
  	var lab = document.createElement("div");
  	lab.id = "pic_and_greet";
-  var facebook = "facebook"
+  var facebook = "facebook";
  	lab.innerHTML = '<img onclick="hello(facebook).logout()" src="' + resp.thumbnail + '" /> Hey ' + resp.name;
  	document.body.appendChild(lab);
 
