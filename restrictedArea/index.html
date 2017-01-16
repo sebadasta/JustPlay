@@ -66,6 +66,7 @@ console.log('entro');
      // remove the greeting when we log out
 
      hello.on('auth.logout', function () {
+       console.log('logOut');
        var lab = document.getElementById("pic_and_greet");
        if (lab != null) document.body.removeChild( lab );
      });
