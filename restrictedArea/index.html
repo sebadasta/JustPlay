@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +10,11 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js" charset="utf-8"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+  <script src="/restrictedArea/hello.js"></script>
+<script src="/restrictedArea/app.js" charset="utf-8"></script>
   <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
   <!--[if lt IE 9]>
       <script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -14,19 +22,25 @@
       <![endif]-->
   <link rel="shortcut icon" href="">
 </head>
-<body>
+<body ng-app="authorizeSample">
 
-  <button onclick="hello('').login()">google</button>
-  <button onclick="hello('').logout()">logout Gmail</button>
-  <br>
-  <button onclick="hello('facebook').login()">Facebook</button>
-  <button onclick="hello('facebook').logout()">logout Facebook</button>
+
+  <ul>
+    <li><a href="#" ui-sref="home">Home</a></li>
+    <li><a href="#" ui-sref="login">Login</a></li>
+    <li><a href="#" ui-sref="private">Private Page</a></li>
+    <li><a href="#" ui-sref="secret">Secret Page</a></li>
+
+    <li><a href="#" ng-click="hello('google').logout()">Logout</a></li>
+  </ul>
+  <section ui-view></section>
+
   <!-- SCRIPTS -->
   <!--
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
       -->
-  <script src="hello.js"></script>
+
   <script>
     hello.init({
       google: "769395586214-jni7dp75c9nj18edh7louk47a6uj6bef.apps.googleusercontent.com",
