@@ -33,7 +33,6 @@
   <li><a href="#" onclick="hello('facebook').logout()">Logout</a></li>
     <!-- <li><a href="#" ng-click="hello('facebook').logout()">Logout</a></li> -->
 
-    onclick
   </ul>
   <section ui-view></section>
 
@@ -56,13 +55,14 @@
        // add a greeting and access the thumbnail and name from
        // the authorized response
 console.log('entro');
-  //      hello(auth.network).api('/me').then(function (resp) {
+       hello(auth.network).api('/me').then(function (resp) {
+         console.log('entro');
  // 	var lab = document.createElement("div");
  // 	lab.id = "pic_and_greet";
  // 	lab.innerHTML = '<img src="' + resp.thumbnail + '" /> Hey ' + resp.name;
  // 	document.body.appendChild(lab);
-  //
-  //      });
+
+       });
      });
 
      // remove the greeting when we log out

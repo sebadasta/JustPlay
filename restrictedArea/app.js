@@ -44,11 +44,15 @@ angular.module('authorizeSample', [
 
   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     if (!Authorization.authorized) {
+      console.log('not autorised');
       if (Authorization.memorizedState && (!_.has(fromState, 'data.redirectTo') || toState.name !== fromState.data.redirectTo)) {
         Authorization.clear();
+        console.log('autorization clear');
       }
       if (_.has(toState.data, 'authorization') && _.has(toState.data, 'redirectTo')) {
+console.log(' autorised');
         if (_.has(toState.data, 'memory')) {
+          console.log(' autorised memorised');
           Authorization.memorizedState = toState.name;
         }
         $state.go(toState.data.redirectTo);
