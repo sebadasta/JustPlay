@@ -43,6 +43,8 @@
             var loggedIn = $rootScope.globals.currentUser;
             if (restrictedPage && !loggedIn) {
                 $location.path('/login');
+
+                console.log(this);
             }
         });
     }
