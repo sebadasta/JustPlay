@@ -47,7 +47,7 @@
             var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
             var loggedIn = $rootScope.globals.currentUser;
             if (restrictedPage && !loggedIn) {
-                $location.path('/login');
+                $location.path('index.html/login');
 
                 console.log(loggedIn);
             }
