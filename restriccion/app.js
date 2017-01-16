@@ -25,11 +25,7 @@
                 templateUrl: 'register/register.view.html',
                 controllerAs: 'vm'
             })
-            .when('/nop', {
-                controller: 'RegisterController',
-                templateUrl: 'nop.html',
-                controllerAs: 'vm'
-            })
+
 
             .otherwise({ redirectTo: '/login' });
     }
@@ -48,7 +44,7 @@
             var loggedIn = $rootScope.globals.currentUser;
             console.log(loggedIn);
             if (restrictedPage && !loggedIn) {
-                $location.path('/');
+                $location.path('/login');
 
 
             }
