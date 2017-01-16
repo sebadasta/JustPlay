@@ -1,5 +1,5 @@
 angular.module('authorizeSample', [
-  'ui.router',
+'ui.router',
 ])
 
 .config(function ($stateProvider, $urlRouterProvider) {
@@ -16,6 +16,7 @@ angular.module('authorizeSample', [
     templateUrl: '/JustPlay/restrictedArea/borrar.html',
     controller: function($scope, $state, Authorization) {
       $scope.onLogin = function() {
+        console.log('onLogin');
         Authorization.go('private');
       };
     }
@@ -26,6 +27,15 @@ angular.module('authorizeSample', [
     data: {
       authorization: true,
       redirectTo: 'login'
+    }
+  })
+  .state('dashboard', {
+    url: '/dashboard',
+    template: '<h1>dashboard</h1>',
+    data: {
+      authorization: true,
+      redirectTo: 'login',
+      memory: true
     }
   })
   .state('secret', {
