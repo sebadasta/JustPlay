@@ -1,6 +1,4 @@
-angular.module('authorizeSample', [
-'ui.router',
-])
+angular.module('authorizeSample', ['ui.router','ngCookies'])
 
 .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -13,10 +11,9 @@ angular.module('authorizeSample', [
   })
   .state("login", {
     url: "/login",
-    templateUrl: '/JustPlay/restrictedArea/borrar.html',
+    template: '<button ng-click="onLogin()">Login</button>',
     controller: function($scope, $state, Authorization) {
       $scope.onLogin = function() {
-        console.log('onLogin');
         Authorization.go('private');
       };
     }
@@ -27,15 +24,6 @@ angular.module('authorizeSample', [
     data: {
       authorization: true,
       redirectTo: 'login'
-    }
-  })
-  .state('dashboard', {
-    url: '/dashboard',
-    template: '<h1>dashboard</h1>',
-    data: {
-      authorization: true,
-      redirectTo: 'login',
-      memory: true
     }
   })
   .state('secret', {
@@ -50,19 +38,15 @@ angular.module('authorizeSample', [
 
 })
 
-.run(function($rootScope, $state, Authorization) {
+.run(function($rootScope, $state, Authorization,AuthenticationService) {
 
   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     if (!Authorization.authorized) {
-      console.log('not autorised');
       if (Authorization.memorizedState && (!_.has(fromState, 'data.redirectTo') || toState.name !== fromState.data.redirectTo)) {
         Authorization.clear();
-        console.log('autorization clear');
       }
       if (_.has(toState.data, 'authorization') && _.has(toState.data, 'redirectTo')) {
-console.log(' autorised');
         if (_.has(toState.data, 'memory')) {
-          console.log(' autorised memorised');
           Authorization.memorizedState = toState.name;
         }
         $state.go(toState.data.redirectTo);
