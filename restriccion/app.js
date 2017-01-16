@@ -25,6 +25,11 @@
                 templateUrl: 'register/register.view.html',
                 controllerAs: 'vm'
             })
+            .when('/nop', {
+                controller: 'RegisterController',
+                templateUrl: 'indexBackUp.html',
+                controllerAs: 'vm'
+            })
 
             .otherwise({ redirectTo: '/login' });
     }
