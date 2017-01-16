@@ -49,7 +49,7 @@
             if (restrictedPage && !loggedIn) {
                 $location.path('/login');
 
-                console.log(this);
+                console.log(loggedIn);
             }
         });
     }
