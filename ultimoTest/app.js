@@ -59,7 +59,6 @@
 
 		if( $rootScope.user !== null ){
 			console.log('SOLO CUANDO CARGA PAGINA user not null osea loggeado');
-			// self.location.href = "#/dashBoard";
 			$scope.whoami = $rootScope.user.name;
 		}
 
@@ -94,7 +93,7 @@
         user.choto = 'choto';
 				$scope.user = user;
 
-				$timeout(function() {//Timeout unicamente para siular el tiempo de respuesta de $http
+				$timeout(function() {//Do NOT delete
 					$rootScope.user = user;
 					store.set('user', user );
 

@@ -119,19 +119,26 @@ form.login input[type="gmailLogIn"]:hover {
 
 
 
-
+/*footer style*/
 .posted-by
 {
 position: absolute;
-bottom: -350px;
+bottom: 0px;
 text-align: center;
 margin: 0 auto;
 color: #FFF;
 background-color: rgba(0, 0, 0, 0.6);
 padding: 5px;
-/*left: 45%;*/
-
 }
+#footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:30px;
+   width:100%;
+}
+
+/*footer style ends*/
 
 #DashBoardbackground {
     position: fixed;
@@ -143,9 +150,9 @@ padding: 5px;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    opacity: 0.3;
+    opacity: 0.25;
     z-index:-10;
-    filter:alpha(opacity=30);
+    filter:alpha(opacity=25);
 
 }
 
