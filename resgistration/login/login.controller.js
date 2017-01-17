@@ -10,13 +10,20 @@
         var vm = this;
 
         vm.login = login;
+        vm.loguser = "";
+        vm.socialNetwork = "";
 
         (function initController() {
             // reset login status
             AuthenticationService.ClearCredentials();
         })();
 
-        function login() {
+        function login(value) {
+          console.log(value);
+
+      
+
+
             vm.dataLoading = true;
             AuthenticationService.Login(vm.username, vm.password, function (response) {
                 if (response.success) {

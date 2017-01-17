@@ -1,0 +1,22 @@
+{
+  "name": "helloAngular",
+  "authors": [
+    "Roger Stringer <roger@flybase.io>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "~0.2.15",
+    "ng-hello": "*"
+  }
+}

@@ -1,7 +1,7 @@
 body
 {
-background: url('http://farm3.staticflickr.com/2832/12303719364_c25cecdc28_b.jpg') fixed;
-background-size: cover;
+/*background: url('http://farm3.staticflickr.com/2832/12303719364_c25cecdc28_b.jpg') fixed;
+background-size: cover;*/
 padding: 0;
 margin: 0;
 }
@@ -123,7 +123,7 @@ form.login input[type="gmailLogIn"]:hover {
 .posted-by
 {
 position: absolute;
-bottom: 0px;
+bottom: -350px;
 text-align: center;
 margin: 0 auto;
 color: #FFF;
@@ -133,6 +133,37 @@ padding: 5px;
 
 }
 
+#DashBoardbackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('http://farm3.staticflickr.com/2832/12303719364_c25cecdc28_b.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.3;
+    z-index:-10;
+    filter:alpha(opacity=30);
+
+}
+
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('http://farm3.staticflickr.com/2832/12303719364_c25cecdc28_b.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    /*opacity: 0.5;*/
+    z-index:-1;
+    /*filter:alpha(opacity=50);*/
+
+}
 
 
 /*only for screen > 800px*/

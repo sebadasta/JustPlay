@@ -3,14 +3,9 @@
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <link rel="stylesheet" href="/CSS/w3.css"> -->
-<link rel="stylesheet" href="https://sebadasta.github.io/JustPlay/CSS/w3.css"> 
-
-
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
@@ -26,10 +21,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidenav"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
-      <img src="http://www.w3schools.com/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
+      <img src="/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8">
-      <span>Welcome {{vm.user.firstName}}!</span><br>
+      <span>Welcome, <strong>Mike</strong></span><br>
       <a href="#" class="w3-hover-none w3-hover-text-red w3-show-inline-block"><i class="fa fa-envelope"></i></a>
       <a href="#" class="w3-hover-none w3-hover-text-green w3-show-inline-block"><i class="fa fa-user"></i></a>
       <a href="#" class="w3-hover-none w3-hover-text-blue w3-show-inline-block"><i class="fa fa-cog"></i></a>
@@ -48,8 +43,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <a href="#" class="w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
   <a href="#" class="w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
   <a href="#" class="w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
-  <a href="#!/login" class="w3-padding"><i class="fa fa-cog fa-fw"></i> Logout</a><br><br>
-
+  <a href="#" class="w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
 </nav>
 
 
@@ -111,8 +105,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-third">
         <h5>Regions</h5>
-        <img src="http://www.w3schools.com/w3images/region.jpg" style="width:100%" alt="Google Regional Map">
-
+        <img src="/w3images/region.jpg" style="width:100%" alt="Google Regional Map">
       </div>
       <div class="w3-twothird">
         <h5>Feeds</h5>
@@ -211,15 +204,52 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       </tr>
     </table><br>
     <button class="w3-btn">More Countries  <i class="fa fa-arrow-right"></i></button>
-
-<div class="w3-container" style="width:90%">
-    <div id="myfirstchart" style="height:100%;width:100%"></div>
-</div>
-
-
+  </div>
+  <hr>
+  <div class="w3-container">
+    <h5>Recent Users</h5>
+    <ul class="w3-ul w3-card-4 w3-white">
+      <li class="w3-padding-16">
+        <span onclick="this.parentElement.style.display='none'" class="w3-closebtn w3-padding w3-margin-right w3-medium">x</span>
+        <img src="/w3images/avatar2.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
+        <span class="w3-xlarge">Mike</span><br>
+      </li>
+      <li class="w3-padding-16">
+        <span onclick="this.parentElement.style.display='none'" class="w3-closebtn w3-padding w3-margin-right w3-medium">x</span>
+        <img src="/w3images/avatar5.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
+        <span class="w3-xlarge">Jill</span><br>
+      </li>
+      <li class="w3-padding-16">
+        <span onclick="this.parentElement.style.display='none'" class="w3-closebtn w3-padding w3-margin-right w3-medium">x</span>
+        <img src="/w3images/avatar6.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
+        <span class="w3-xlarge">Jane</span><br>
+      </li>
+    </ul>
   </div>
   <hr>
 
+  <div class="w3-container">
+    <h5>Recent Comments</h5>
+    <div class="w3-row">
+      <div class="w3-col m2 text-center">
+        <img class="w3-circle" src="/w3images/avatar3.png" style="width:96px;height:96px">
+      </div>
+      <div class="w3-col m10 w3-container">
+        <h4>John <span class="w3-opacity w3-medium">Sep 29, 2014, 9:12 PM</span></h4>
+        <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
+      </div>
+    </div>
+
+    <div class="w3-row">
+      <div class="w3-col m2 text-center">
+        <img class="w3-circle" src="/w3images/avatar1.png" style="width:96px;height:96px">
+      </div>
+      <div class="w3-col m10 w3-container">
+        <h4>Bo <span class="w3-opacity w3-medium">Sep 28, 2014, 10:15 PM</span></h4>
+        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
+      </div>
+    </div>
+  </div>
   <br>
   <div class="w3-container w3-dark-grey w3-padding-32">
     <div class="w3-row">
@@ -246,13 +276,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
 
   <!-- Footer -->
-  <!-- <footer class="w3-container w3-padding-16 w3-light-grey">
+  <footer class="w3-container w3-padding-16 w3-light-grey">
     <h4>FOOTER</h4>
     <p>Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-  </footer> -->
+  </footer>
 
   <!-- End page content -->
 </div>
+
 <script>
 // Get the Sidenav
 var mySidenav = document.getElementById("mySidenav");
@@ -276,48 +307,6 @@ function w3_close() {
     mySidenav.style.display = "none";
     overlayBg.style.display = "none";
 }
-</script>
-
-<script type="text/javascript">
- window.m = Morris.Line({
-// ID of the element in which to draw the chart.
-element: 'myfirstchart',
-// Chart data records -- each entry in this array corresponds to a point on
-// the chart.
-data: [
-  { year: '2008', value: 20,value2:200 },
-  { year: '2009', value: 1000,value2:200},
-  { year: '2010', value: 5,value2:200 },
-  { year: '2011', value: 500,value2:200 },
-  { year: '2012', value: 20,value2:200 },
-  { year: '2013', value: -500,value2:200 },
-  { year: '2014', value: 20,value2:200 },
-  { year: '2015', value: 5,value2:200 },
-  { year: '2016', value: 2,value2:200 },
-  { year: '2017', value: 100,value2:200 },
-  { year: '2018', value: 20,value2:200 },
-  { year: '2019', value: 1500,value2:200},
-  { year: '2020', value: 220,value2:200 },
-  { year: '2021', value: 5030,value2:200 },
-  { year: '2022', value: 203,value2:200 },
-  { year: '2023', value: -500,value2:200 },
-  { year: '2024', value: 20,value2:200 }
-],
-// The name of the data record attribute that contains x-values.
-xkey: 'year',
-// A list of names of data record attributes that contain y-values.
-ykeys: ['value','value2'],
-// Labels for the ykeys -- will be displayed when you hover over the
-// chart.
-labels: ['Value','value2'],
-lineColors:['#ff00ff','blue']
-
-});
-
-$(window).on("resize", function(){
-      m.redraw();
-   });
-
 </script>
 
 </body>
