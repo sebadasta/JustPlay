@@ -16,15 +16,19 @@
 			controller: "LoginController"
 		})
 
-		.state('test', {
-			url: "/test",
-			templateUrl: "test.html",
-			controller: "TestController"
-		})
-
 		.state('home', {
 			url: "/login",
 			template: "home.html"
+		})
+
+		.state('login.moredata', {
+			url: "moredata",
+			templateUrl: "dashboardBodyParts/moredata.html"
+		})
+
+		.state('login.data', {
+			url: "data",
+			templateUrl: "dashboardBodyParts/data.html"
 		});
 	});
 
@@ -73,7 +77,7 @@
 		};
 
 		$scope.logout = function () {
-			hello('facebook').logout().then(function() {
+			hello('google').logout().then(function() {
 				$timeout(function() {
 					store.remove('user');
 					$scope.whoami = "";
@@ -82,6 +86,15 @@
 			}, function(e) {
 				alert('Signed out error: ' + e.error.message);
 			});
+		};
+
+
+		$scope.test = function (){
+
+console.log('asd');
+// self.location. = "#/test";
+
+
 		};
 
 		hello.on("auth.login", function (auth) {
