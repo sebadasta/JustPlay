@@ -1,0 +1,77 @@
+<!-- style="margin: 0px 25px 0px 25px;" -->
+  <div
+line-chart
+line-data='[
+  { y: "2006", a: 100, b: 90 },
+  { y: "2007", a: 75,  b: 65 },
+  { y: "2008", a: 50,  b: 40 },
+  { y: "2009", a: 0,  b: 0 },
+  { y: "2010", a: 50,  b: 40 },
+  { y: "2011", a: -75,  b: -65 },
+  { y: "2012", a: 100, b: 90 }
+]'
+line-xkey='y'
+line-ykeys='["a", "b"]'
+line-labels='["Serie A", "Serie B"]'
+line-colors='["#31C0BE", "#c7254e"]'
+line-resize = 'true'
+line-goals= '["0.0"]'
+
+>
+</div>
+
+
+<div
+area-chart
+area-data='[
+    { y: "2006", a: 100, b: 0 },
+    { y: "2007", a: 75,  b: 15 },
+    { y: "2008", a: 50,  b: 20 },
+    { y: "2009", a: 45,  b: 35 },
+    { y: "2010", a: 20,  b: 20 },
+    { y: "2011", a: 15,  b: 65 },
+    { y: "2012", a: 0, b: 90 }
+  ]'
+area-xkey='y'
+area-ykeys='["a", "b"]'
+area-labels='["Point A", "Point B"]'
+line-colors='["#31C0BE", "#c7254e"]'
+area-resize = 'true'
+>
+</div>
+
+
+
+<div
+donut-chart
+donut-data='[
+    {label: "Song Revenues", value: 12},
+    {label: "Anual Revenues",value: 30},
+    {label: "Album Revenues", value: 20},
+    {label: "Another Song Revenues", value: 5}
+]'
+donut-label-color='"#000000"'
+donut-background-color='"#ffffff"'
+donut-colors='["#31C0BE","#c7254e","#98a0d3","#00a0d3"]'
+donut-formatter='"currency"'
+donut-resize = 'true'>
+</div>
+
+
+<div
+bar-chart
+bar-data='[
+    { y: "2006", a: 100, b: 90 },
+    { y: "2007", a: 75,  b: 65 },
+    { y: "2008", a: 50,  b: 40 },
+    { y: "2009", a: 75,  b: 65 },
+    { y: "2010", a: 50,  b: 40 },
+    { y: "2011", a: 75,  b: 65 },
+    { y: "2012", a: 100, b: 90 }
+]'
+bar-x='y'
+bar-y='["a", "b"]'
+bar-labels='["Series A", "Series B"]'
+bar-colors='["#31C0BE", "#c7254e"]'
+bar-resize = 'true'>
+</div>

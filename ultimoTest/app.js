@@ -1,5 +1,5 @@
 (function () {
-	var app = angular.module('helloApp', ['ui.router','ngHello','angular-storage']);
+	var app = angular.module('helloApp', ['ui.router', 'angular-maps','ngHello','angular-storage','angular.morris']);
 
 	app.config( function($stateProvider, $urlRouterProvider, helloProvider) {
 		helloProvider.init({
@@ -21,9 +21,16 @@
 			template: "home.html"
 		})
 
-		.state('login.moredata', {
-			url: "moredata",
-			templateUrl: "dashboardBodyParts/moredata.html"
+		.state('login.statistics', {
+			url: "statistics",
+			templateUrl: "dashboardBodyParts/statistics.html",
+			controller: 'statistics'
+		})
+
+		.state('login.worldMapView', {
+			url: "worldMapView",
+			templateUrl: "dashboardBodyParts/worldMapView.html",
+			controller:'maps'
 		})
 
 		.state('login.data', {
@@ -47,6 +54,39 @@
 		});
 	});
 
+	app.controller('maps', ['$scope', function($scope) {
+
+	    $scope.valueRange = [0,100];
+	    $scope.colorRange = ["#F03B20", "#FFEDA0"];
+	    $scope.dimension = 600;
+	    $scope.mapWidth = 600;
+	    $scope.descriptiveText = 'failure %';
+	    $scope.countryFillColor = "#aaa";
+	    $scope.countryBorderColor = "#fff";
+	    $scope.worldData = [
+	        {
+	          "countryCode": "AFG",
+	          "value": 10
+	        },
+	        {
+	          "countryCode": "USA",
+	          "value": 99
+	        },
+	        {
+	          "countryCode": "CAN",
+	          "value": 50
+	        },
+	        {
+	          "countryCode": "ISR",
+	          "value": 2
+	        },
+	        {
+	          "countryCode": "NLD",
+	          "value": 30
+	        }
+	      ];
+	}]);
+
 	app.controller('TestController', function ($scope, $rootScope, hello, $timeout) {
 		$scope.whoami = "";
 
@@ -56,6 +96,24 @@
 			$scope.whoami = "Hey " + $rootScope.user.name;
 		}
 	});
+
+
+	app.controller('statistics', function ($scope) {
+		// $scope.data = [
+    //   { y: "2006", a: 100 },
+    //   { y: "2007", a: 75 },
+    //   { y: "2008", a: 50 },
+    //   { y: "2009", a: 75 },
+    //   { y: "2010", a: 50 },
+    //   { y: "2011", a: 750 },
+    //   { y: "2012", a: 1000 }
+    // ];
+    // $scope.xaxis = 'y';
+    // $scope.yaxis = '["a"]';
+	});
+
+
+
 
 	app.controller('LoginController', function ($scope, $rootScope, hello, store, $timeout) {
 		$scope.whoami = "";
@@ -77,7 +135,7 @@
 		};
 
 		$scope.logout = function () {
-			hello('google').logout().then(function() {
+			hello('facebook').logout().then(function() {
 				$timeout(function() {
 					store.remove('user');
 					$scope.whoami = "";
