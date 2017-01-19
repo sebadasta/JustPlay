@@ -38,7 +38,7 @@
                 <p class="form-title"><b>Just</b>Play</p>
                 <p class="form-description">MUSIC and VIDEO DIGITAL DISTRIBUTION - MUSIC PUBLISHING - PROMOTION - LIVE BOOKINGS - ARTIST MANAGEMENT</p>
                 <form class="login">
-                <input type="FacebookLogIn" ng-click="loginFace()" value="Facebook" class="btn btn-success btn-sm" readonly />
+                <input ui-sref="login.data" type="FacebookLogIn" ng-click="loginFace()" value="Facebook" class="btn btn-success btn-sm" readonly />
                 <input type="twitterLogIn" value="Twitter" class="btn btn-success btn-sm"  readonly/>
                 <input id ="customBtn" ng-click="loginGmail()" type="gmailLogIn" value="Gmail" class=" btn btn-success btn-sm" readonly/>
                 </form>
@@ -80,15 +80,15 @@
       <hr>
 
       <a href="#" class="w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-      <a ui-sref="login.data" class="w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
-      <a  ui-sref="login.data" class="w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
-      <a href="#" class="w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
+      <a ui-sref="login.data" class="w3-padding w3-blue"><i class="fa fa-list-alt fa-fw"></i>  Overview</a>
+      <a  ui-sref="login.distribution" class="w3-padding"><i class="fa fa-music fa-fw"></i>  Distribution</a>
+      <a href="#" class="w3-padding"><i class="fa fa-users fa-fw"></i>  Social</a>
       <a ui-sref="login.statistics" class="w3-padding"><i class="fa fa-line-chart fa-fw"></i>  Statistics</a>
       <a ui-sref="login.worldMapView" class="w3-padding"><i class="fa fa-globe fa-fw"></i>  World Map</a>
-      <a href="#" class="w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
-      <a href="#" class="w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
+      <a href="#" class="w3-padding"><i class="fa fa-bell fa-fw"></i>  Messages</a>
+      <a href="#" class="w3-padding"><i class="fa fa-bank fa-fw"></i>  Financials</a>
       <a href="#" class="w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
-      <a ng-click="logout()" href="#" class="w3-padding"><i class="fa fa-cog fa-fw"></i>  Logout</a><br><br>
+      <a ng-click="logout()" href="#" class="w3-padding"><i class="fa fa-sign-out fa-fw"></i>  Logout</a><br><br>
     </nav>
 
 
@@ -107,24 +107,20 @@
       <hr>
       <br>
 
-      <div class="w3-container w3-dark-grey w3-padding-32">
+      <div class="w3-container w3-dark-grey w3-padding-8">
         <div class="w3-row">
           <div class="w3-container w3-third">
             <h5 class="w3-bottombar w3-border-green">Demographic</h5>
-            <p>Language</p>
             <p>Country</p>
             <p>City</p>
           </div>
           <div class="w3-container w3-third">
             <h5 class="w3-bottombar w3-border-red">System</h5>
-            <p>Browser</p>
             <p>OS</p>
             <p>More</p>
           </div>
           <div class="w3-container w3-third">
             <h5 class="w3-bottombar w3-border-orange">Target</h5>
-            <p>Users</p>
-            <p>Active</p>
             <p>Geo</p>
             <p>Interests</p>
           </div>

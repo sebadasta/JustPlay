@@ -1,5 +1,4 @@
 
-
 // Get the Sidenav
 var mySidenav = document.getElementById("mySidenav");
 

@@ -1,5 +1,5 @@
 (function () {
-	var app = angular.module('helloApp', ['ui.router', 'angular-maps','ngHello','angular-storage','angular.morris']);
+	var app = angular.module('helloApp', ['ui.router','ngHello','angular-storage','angular.morris']);
 
 	app.config( function($stateProvider, $urlRouterProvider, helloProvider) {
 		helloProvider.init({
@@ -33,6 +33,13 @@
 			controller:'maps'
 		})
 
+		.state('login.distribution', {
+			url: "distribution",
+			templateUrl: "dashboardBodyParts/distribution.html",
+
+		})
+
+
 		.state('login.data', {
 			url: "data",
 			templateUrl: "dashboardBodyParts/data.html"
@@ -56,35 +63,118 @@
 
 	app.controller('maps', ['$scope', function($scope) {
 
-	    $scope.valueRange = [0,100];
-	    $scope.colorRange = ["#F03B20", "#FFEDA0"];
-	    $scope.dimension = 600;
-	    $scope.mapWidth = 600;
-	    $scope.descriptiveText = 'failure %';
-	    $scope.countryFillColor = "#aaa";
-	    $scope.countryBorderColor = "#fff";
-	    $scope.worldData = [
-	        {
-	          "countryCode": "AFG",
-	          "value": 10
-	        },
-	        {
-	          "countryCode": "USA",
-	          "value": 99
-	        },
-	        {
-	          "countryCode": "CAN",
-	          "value": 50
-	        },
-	        {
-	          "countryCode": "ISR",
-	          "value": 2
-	        },
-	        {
-	          "countryCode": "NLD",
-	          "value": 30
-	        }
-	      ];
+
+		window.onresize = function(event) {
+
+$( "#container" ).remove();
+$( "#createMap" ).append( '<div id="container" class="w3-container"></div>');
+
+var map2 = new Datamap({
+				element: document.getElementById('container'),
+				projection: 'mercator',
+				fills: {
+					HIGH: '#afafaf',
+					LOW: 'rgb(0%, 25%, 53%)',
+					MEDIUM: '004080',
+					Nothing: 'grey',
+					choto:'#99ccff',
+					defaultFill: '#a9a9a9'
+				},
+				data: {
+						IRL: {
+								fillKey: 'LOW',
+								numberOfThings: 2002
+						},
+						USA: {
+								fillKey: 'MEDIUM',
+								numberOfThings: 10381
+						},
+						ARG: {
+								fillKey: 'choto',
+								numberofChorros: 10381
+						}
+				},
+				responsive: true,
+
+				geographyConfig: {
+						popupTemplate: function(geo, data) {
+
+if (geo.id == "ARG") {
+return ['<div class="hoverinfo"><strong>',
+			'Number of chorros in ' + geo.properties.name,
+			': ' + data.numberofChorros,
+			'</strong></div>'].join('');
+}else {
+
+return ['<div class="hoverinfo"><strong>',
+				'Number of things in ' + geo.properties.name,
+				': ' + data.numberOfThings,
+				'</strong></div>'].join('');
+}
+
+						}
+
+				}
+
+		});
+
+
+		};
+
+		var map = new Datamap({
+		        element: document.getElementById('container'),
+						projection: 'mercator',
+		        fills: {
+							HIGH: '#afafaf',
+							LOW: 'rgb(0%, 25%, 53%)',
+							MEDIUM: '004080',
+							Nothing: 'grey',
+							choto:'#99ccff',
+							defaultFill: '#a9a9a9'
+		        },
+						height: null, //if not null, datamaps will grab the height of 'element'
+    width: null,
+		        data: {
+		            IRL: {
+		                fillKey: 'LOW',
+		                numberOfThings: 2002
+		            },
+		            USA: {
+		                fillKey: 'MEDIUM',
+		                numberOfThings: 10381
+		            },
+		            ARG: {
+		                fillKey: 'choto',
+		                numberofChorros: 10381
+		            }
+		        },
+						responsive: true,
+
+		        geographyConfig: {
+
+		            popupTemplate: function(geo, data) {
+
+if (geo.id == "ARG") {
+	return ['<div class="hoverinfo"><strong>',
+					'Number of chorros in ' + geo.properties.name,
+					': ' + data.numberofChorros,
+					'</strong></div>'].join('');
+}else {
+
+		return ['<div class="hoverinfo"><strong>',
+						'Number of things in ' + geo.properties.name,
+						': ' + data.numberOfThings,
+						'</strong></div>'].join('');
+}
+
+		            }
+
+		        }
+
+		    });
+
+
+
 	}]);
 
 	app.controller('TestController', function ($scope, $rootScope, hello, $timeout) {
