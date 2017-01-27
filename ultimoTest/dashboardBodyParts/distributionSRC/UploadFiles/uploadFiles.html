@@ -1,0 +1,163 @@
+<html>
+	<head>
+		<title>Home</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	</head>
+	<style media="screen">
+	.drop-box {
+	background: #F8F8F8;
+	border: 5px dashed #DDD;
+	width: 100%;
+	height: 200px;
+	text-align: center;
+	padding-top: 25px;
+	margin: 10px;
+	opacity: 0.5;
+}
+.dragover {
+	border: 5px dashed blue;
+}
+
+body{
+
+}
+
+input[type='file'] {
+  color: transparent;
+}
+
+#BrowseFilesBtn {
+
+display: none;
+
+}
+
+/*.drop-box[addFiles="false"] {
+height: 50px;
+}*/
+
+
+/*only for screen > 800px*/
+@media only screen and (max-width: 800px) {
+/*This is to avoid hover effect in mobile devices*/
+
+#BrowseFilesBtn {
+
+display: inline;;
+
+}
+
+.drop-box {
+display: none;
+}
+.dragover {
+display: none;
+}
+
+}
+
+
+
+	</style>
+	<body ng-controller="distributionController as up">
+
+<div class="w3-container w3-center">
+
+
+		<h1 ng-if="up.showDrop" style="text-align:center;">File Upload</h1>
+        <form ng-controller="distributionController as up"  name="up.upload_form" style="width:80%;" >
+					<div ng-if="up.showDrop" ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+
+					 <div ngf-drop="up.drop()" ng-if="up.showDrop" ngf-select ng-model="up.files"
+
+			       ngf-multiple="true" ngf-allow-dir="true"
+						 ngf-pattern="'image/*,audio/*'"
+						 accept="image/*,audio/*"
+						 class="drop-box w3-display-container"
+			        ngf-drag-over-class="'dragover'">
+<p class="w3-display-middle"><b>Drop</b> Files or <b>Press</b> here</p>
+							</div>
+
+					  <input id="BrowseFilesBtn" style="margin-left:31%;"
+                ng-if="up.showDrop"
+								type="file"
+                ngf-select = "up.drop()"
+                ng-model="up.files"
+                name="file"
+                ngf-pattern="'image/*,audio/*'"
+                accept="image/*,audio/*"
+                ngf-max-size="20MB"
+								multiple
+                />
+            <i ng-show="up.upload_form.file.$error.required">*required</i><br>
+            <i ng-show="up.upload_form.file.$error.maxSize">File too large
+            {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+
+<h3 style="text-align:center;">Files to Upload</h3>
+
+<div class="table-responsive">
+  <table class="table">
+    <tbody>
+      <tr ng-repeat="f in up.files" >
+        <td>{{f.name}}</td>
+        <td><audio controls style="width:100px;" ngf-src="f"></audio><img ngf-thumbnail="f" style="width:50px;height:50px;"></td>
+        <td><button ng-click="up.delete($index)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+<br>
+<hl/>
+
+<div ng-repeat="f in up.files" class="w3-accordion w3-light-grey">
+    <button ng-click="up.showAccordionContent($index)" class="w3-btn-block w3-red w3-left-align w3-border">{{f.name}}</button>
+<!-- momentary solution should fix this -->
+		<div id="{{f.name}}" class="w3-accordion-content w3-container">
+			<br>
+		<form>
+			<p>{{f.name}} </p>
+  <div class="form-group">
+    <label for="email">Email address:</label>
+    <input type="email" class="form-control" id="email">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" id="pwd">
+  </div>
+
+</form>
+</div>
+  </div>
+
+<br>
+<div class="w3-row w3-center">
+		 <button class="w3-center" type="submit" ng-click="up.upload(up.files)">submit</button>
+		</div>
+		<br>
+<div class="w3-row w3-center">
+	<button ng-if="up.addFiles" class="w3-center" type="submit" ng-click="">add Files</button>
+</div>
+		 <p>{{up.progress}}</p>
+
+<br>
+
+
+
+        </form>
+
+
+</div>
+ </body>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+	<script type="text/javascript" src="ng-file-upload.min.js"></script>
+	<script type="text/javascript" src="ng-file-upload-shim.min.js"></script>
+	<!-- <script type="text/javascript" src="main.js"></script> -->
+
+<!-- dashboardBodyParts/distributionSRC/UploadFiles/ng-file-upload-shim.min.js -->
+
+
+</html>

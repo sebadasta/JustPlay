@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JP LogIn</title>
+    <title>JM LogIn</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://apis.google.com/js/api:client.js"></script>
@@ -35,7 +35,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="wrap">
-                <p class="form-title"><b>Just</b>Play</p>
+                <p class="form-title"><b>Just</b>Music</p>
                 <p class="form-description">MUSIC and VIDEO DIGITAL DISTRIBUTION - MUSIC PUBLISHING - PROMOTION - LIVE BOOKINGS - ARTIST MANAGEMENT</p>
                 <form class="login">
                 <input ui-sref="login.data" type="FacebookLogIn" ng-click="loginFace()" value="Facebook" class="btn btn-success btn-sm" readonly />
@@ -59,7 +59,7 @@
     <div class="w3-container w3-top w3-black w3-large w3-padding" style="z-index:4;">
       <button class="w3-btn w3-hide-large w3-padding-0 w3-hover-text-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
       <!-- <span class="w3-right">Logo</span> -->
-      <span class="w3-right"><b>Just</b>Play</span>
+      <span class="w3-right"><b>Just</b>Music</span>
 
     </div>
 
@@ -79,15 +79,27 @@
 
       <hr>
 
-      <a href="#" class="w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+      <!-- <a href="#" class="w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a> -->
       <a ui-sref="login.data" class="w3-padding w3-blue"><i class="fa fa-list-alt fa-fw"></i>  Overview</a>
-      <a  ui-sref="login.distribution" class="w3-padding"><i class="fa fa-music fa-fw"></i>  Distribution</a>
+      <!-- <a  ui-sref="login.distribution" class="w3-padding"><i class="fa fa-music fa-fw"></i>  Distribution</a> -->
+      <div class="w3-accordion">
+  <a  onclick="myAccFunc()" href="javascript:void(0)" class="" id="myBtn">
+    <i class="fa fa-music fa-fw"></i>  Distribution <i class="fa fa-caret-down"></i>
+  </a>
+  <div id="demoAcc" class="w3-accordion-content w3-padding-large w3-medium">
+    <a href="#" class="w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>Something</a>
+    <a ui-sref="login.distribution">New Release</a>
+    <a href="#">Pendient Releases</a>
+    <a href="#" class="w3-text-red">Rejected</a>
+  </div>
+</div>
       <a href="#" class="w3-padding"><i class="fa fa-users fa-fw"></i>  Social</a>
       <a ui-sref="login.statistics" class="w3-padding"><i class="fa fa-line-chart fa-fw"></i>  Statistics</a>
       <a ui-sref="login.worldMapView" class="w3-padding"><i class="fa fa-globe fa-fw"></i>  World Map</a>
       <a href="#" class="w3-padding"><i class="fa fa-bell fa-fw"></i>  Messages</a>
       <a href="#" class="w3-padding"><i class="fa fa-bank fa-fw"></i>  Financials</a>
       <a href="#" class="w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
+      <a ui-sref="login.upgrade" class="w3-padding"><i class="fa fa-diamond fa-fw"></i>  Upgrade</a>
       <a ng-click="logout()" href="#" class="w3-padding"><i class="fa fa-sign-out fa-fw"></i>  Logout</a><br><br>
     </nav>
 
@@ -140,6 +152,5 @@
      <div class="col-lg-12 col-xs-12 col-md-12 col-ms-12 posted-by">Created By: <a href="http://www.gd78music.com">GD Seventy Eight Music LTD.</a></div>
   </div>
 </div>
-
 </body>
 </html>

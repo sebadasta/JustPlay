@@ -1,11 +1,13 @@
 (function () {
-	var app = angular.module('helloApp', ['ui.router','ngHello','angular-storage','angular.morris']);
+
+	var app = angular.module('helloApp', ['ngFileUpload','ui.router','ngHello','angular-storage','angular.morris']);
 
 	app.config( function($stateProvider, $urlRouterProvider, helloProvider) {
 		helloProvider.init({
 			facebook: '728098144022836',
 			google: "769395586214-jni7dp75c9nj18edh7louk47a6uj6bef.apps.googleusercontent.com"
 		}, {redirect_uri: 'redirect.html'});
+
 
 
 		$urlRouterProvider.otherwise("/");
@@ -35,7 +37,15 @@
 
 		.state('login.distribution', {
 			url: "distribution",
-			templateUrl: "dashboardBodyParts/distribution.html",
+			templateUrl: "dashboardBodyParts/distributionSRC/UploadFiles/uploadFiles.html",
+			controller:'distributionController'
+
+		})
+
+
+		.state('login.upgrade', {
+			url: "upgrade",
+			templateUrl: "dashboardBodyParts/upgrade.html",
 
 		})
 
@@ -202,34 +212,140 @@ if (geo.id == "ARG") {
     // $scope.yaxis = '["a"]';
 	});
 
+// distributionController
+	app.controller('distributionController',['$rootScope','Upload','$window', '$http',function($rootScope,Upload,$window,$http){
+	    var vm = this;
+      vm.showDrop = true;
+			vm.addFiles = false;
+
+vm.delete = function(index) {
+
+vm.files.splice(index,1);
+
+if (0 == vm.files.length) {//if file array is empty shows browse and dropbox again
+  vm.showDrop = true;
+		vm.addFiles = false;
+}
+
+
+}
+
+
+vm.drop = function(){
+
+vm.showDrop = false;
+	vm.addFiles = true;
+
+}
+
+
+vm.showAccordionContent = function(index){
+
+	var x = document.getElementById(vm.files[index].name);
+
+	     if (x.className.indexOf("w3-show") == -1) {
+	         x.className += " w3-show";
+	     } else {
+	         x.className = x.className.replace(" w3-show", "");
+	     }
+
+}
+
+	    vm.submit = function(){ //function to call on form submit
+
+	        if (vm.upload_form.file.$valid && vm.files) { //check if from is valid
+	            vm.upload(vm.files); //call upload function
+	        }else{
+	console.log('algo mal');
+	        }
+	    }
 
 
 
-	app.controller('LoginController', function ($scope, $rootScope, hello, store, $timeout) {
+	    vm.upload = function (file) {
+
+	vm.files = file;
+	vm.userDetails = $rootScope.user;
+
+// vm.files.forEach(function (item) {
+//   console.log(item);
+// })
+
+	        Upload.upload({
+	            url: 'http://localhost:8002/upload', //webAPI exposed to upload the file
+	            data:{file:vm.files} //pass file as data, should be user ng-model
+	        }).then(function (resp) { //upload function returns a promise
+	            if(resp.data.error_code === 0){ //validate success
+	                $window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
+	            } else {
+	                $window.alert('an error occured');
+	            }
+	        }, function (resp) { //catch error
+	            console.log('Error status: ' + resp.status);
+	            $window.alert('Error status: ' + resp.status);
+	        }, function (evt) {
+	            console.log(evt);
+	            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+	            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+	            vm.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
+	        });
+	    };
+	}]);
+
+
+	app.controller('LoginController', function ($scope, $rootScope, hello, store, $timeout,$http) {
 		$scope.whoami = "";
 		$scope.social = "lalalaa";
 
 		if( $rootScope.user !== null ){
 			console.log('SOLO CUANDO CARGA PAGINA user not null osea loggeado');
 			$scope.whoami = $rootScope.user.name;
+
+
+			$http({//when page is loaded and user is logged in updates dateTime
+							method : "POST",
+							url : "http://localhost:8002/searchUser",
+							data:{mandado:$rootScope.user.name}
+					}).then(function mySucces() {
+							// vm.myWelcome = response.data;
+					}, function myError() {
+							// vm.myWelcome = response.statusText;
+					});
+
+
 		}
+
+
 
 		$scope.loginFace = function () {
 			hello('facebook').login();
-			$scope.social = "facebook";
+		$rootScope.socialLogIn = "facebook";
 		};
 
 		$scope.loginGmail = function () {
 			hello('google').login();
-			$scope.social = "google";
+		$rootScope.socialLogIn = "google";
 		};
 
 		$scope.logout = function () {
+						// store.remove('user'); //Just to restore User problems
 			hello('facebook').logout().then(function() {
 				$timeout(function() {
+
+					$http({//Updates SessionTime If User Exist
+									method : "POST",
+									url : "http://localhost:8002/searchUser",
+									data:{mandado:$rootScope.user.name}
+							}).then(function mySucces() {
+									// vm.myWelcome = response.data;
+							}, function myError() {
+									// vm.myWelcome = response.statusText;
+							});
+
 					store.remove('user');
 					$scope.whoami = "";
 					$rootScope.user = {};
+					$rootScope.socialLogIn = "";
 				});
 			}, function(e) {
 				alert('Signed out error: ' + e.error.message);
@@ -238,10 +354,7 @@ if (geo.id == "ARG") {
 
 
 		$scope.test = function (){
-
-console.log('asd');
 // self.location. = "#/test";
-
 
 		};
 
@@ -262,6 +375,20 @@ console.log(store.get('user'));
 
 					$scope.whoami = $rootScope.user.name;
 					$scope.thumbnail = $rootScope.user.thumbnail;
+
+											$http({//Updates SessionTime If User Exist
+															method : "POST",
+															url : "http://localhost:8002/searchUser",
+															data:{mandado:$rootScope.user.name,
+															socialLogIn: $rootScope.socialLogIn}
+													}).then(function mySucces() {
+															// vm.myWelcome = response.data;
+													}, function myError() {
+															// vm.myWelcome = response.statusText;
+													});
+
+
+
 				});
 			});
 		});
